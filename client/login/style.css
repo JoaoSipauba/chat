@@ -39,7 +39,7 @@ margin-bottom: 0.4rem;
 }
 
 .bnt{
-    background: green;
+    background-color: green;
     color: #ffff;
     width: 100%;
     height: 2.8rem;
@@ -47,6 +47,11 @@ margin-bottom: 0.4rem;
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    border: none;
     border-radius: 5px;
     margin: 20px;
+}
+.bnt:hover{
+    background-color: rgb(1, 83, 1);
+    transition: 0.3s ease-in-out;
 }
