@@ -17,8 +17,12 @@ const users: RoomUser[] = []
 const messages: Message[] = []
 
 io.on('connection', socket => {
+    socket.on('disconnect', () => {
+        console.log('🔥: A user disconnected');
+    });
     socket.on('select_room', data => {
         socket.join(data.room)
+        console.log(`⚡user: ${data.username} just connected!`);
         
         const userInRoom = users.find(user => user.username === data.username && user.room === data.room);
 
@@ -34,6 +38,7 @@ io.on('connection', socket => {
     })
 
     socket.on('message', data => {
+        console.log(`⚡user: ${data.username} sent a message!`);
         const message: Message = {
             room: data.room,
             username: data.username,
