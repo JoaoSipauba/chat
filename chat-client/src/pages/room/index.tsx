@@ -48,20 +48,19 @@ function RoomPage() {
   }
 
   return (
-    <>
-    <header className="box-btn">
-        <a className="btn" onClick={logout}>Logout</a>
-        <div className="chat">
-            <p id='welcome'>Olá <strong>{query.get('username')}</strong>. Seja bem vindo à sala <strong>{query.get('room')}</strong>.</p>
-            <div id="text">
-              {messages.map((message, index) => message.username === query.get('username') ? <Message className='self-message' username={message.username} text={message.text} created_at={message.created_at} typeOfMessage='withoutUsername'/> : <Message className='other-message' username={message.username} text={message.text} created_at={message.created_at} typeOfMessage='withUsername'/>)}
-            </div>
-        </div>
-    </header>
-    <section className="box-search">
-        <input className="search" type="text" name="Nome" placeholder="Digite sua mensagem" onKeyPress={handleKeyPress} onChange={e => setText(e.target.value)} value={text}/>
-    </section>
-    </>
+    <div className='container'>
+      <header className="header">
+          <a className="btn" onClick={logout}>Logout</a>
+          <p id='welcome'>Olá <strong>{query.get('username')}</strong>. Seja bem vindo à sala <strong>{query.get('room')}</strong>.</p>
+      </header>
+      <div className="chat">
+        {messages.map((message, index) => message.username === query.get('username') ? 
+          <Message key={index} className='self-message' username={message.username} text={message.text} created_at={message.created_at} typeOfMessage='withoutUsername'/> : 
+          <Message key={index} className='other-message' username={message.username} text={message.text} created_at={message.created_at} typeOfMessage='withUsername'/>
+        )}
+      </div>
+      <input className="input" type="text" name="Nome" placeholder="Digite sua mensagem" onKeyPress={handleKeyPress} onChange={e => setText(e.target.value)} value={text}/>
+    </div>
   )
 }
 
