@@ -1,0 +1,36 @@
+.message{
+    margin-bottom: 1rem;
+    padding: 0.4rem 1rem;
+    max-width: 85%;
+    min-width: 15%;
+    width: fit-content;
+    background-color: rgb(221, 217, 217);
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.self{
+    align-self: flex-end;
+}
+
+.others{
+    align-self: flex-start;
+}
+
+.username{
+    font-size: 1.1rem;
+}
+
+.text{
+    font-size: 1rem;
+    max-width: 98%;
+    word-break: break-all;
+}
+
+.time{
+    text-align: end;
+    font-size: 0.8rem;
+}

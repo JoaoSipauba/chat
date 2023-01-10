@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom'
+import Message from '../../components/message';
 import { sendMessage, socket } from '../../service/socket';
 
 import './index.css'
@@ -53,7 +54,7 @@ function RoomPage() {
         <div className="chat">
             <p id='welcome'>Olá <strong>{query.get('username')}</strong>. Seja bem vindo à sala <strong>{query.get('room')}</strong>.</p>
             <div id="text">
-              {messages.map((message, index) => <p key={index}><strong>{message.username}</strong> {message.text} - {`${message.created_at.getHours()}:${message.created_at.getMinutes()}`}</p>)}
+              {messages.map((message, index) => message.username === query.get('username') ? <Message className='self-message' username={message.username} text={message.text} created_at={message.created_at} typeOfMessage='withoutUsername'/> : <Message className='other-message' username={message.username} text={message.text} created_at={message.created_at} typeOfMessage='withUsername'/>)}
             </div>
         </div>
     </header>

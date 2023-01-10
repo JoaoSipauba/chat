@@ -11,6 +11,7 @@ interface Message{
     text: string
     created_at: Date
     username: string
+    type: 'text' | 'connection'
 }
 
 const users: RoomUser[] = []
@@ -19,6 +20,18 @@ const messages: Message[] = []
 io.on('connection', socket => {
     socket.on('disconnect', () => {
         console.log('🔥: A user disconnected');
+        const userInRoom = users.find(user => user.socket_id === socket.id);
+        if (userInRoom) {
+            const message: Message = {
+                room: userInRoom.room,
+                username: userInRoom.username,
+                created_at: new Date(),
+                text: `desconectado`,
+                type: 'connection'
+            }
+            messages.push(message);
+            io.to(message.room).emit("message", message)
+        }
     });
     socket.on('select_room', data => {
         socket.join(data.room)
@@ -43,7 +56,8 @@ io.on('connection', socket => {
             room: data.room,
             username: data.username,
             created_at: new Date(),
-            text: data.message
+            text: data.message,
+            type: 'text'
         }
 
         messages.push(message);
