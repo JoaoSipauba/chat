@@ -1,10 +1,10 @@
 .message{
-    margin-bottom: 1rem;
+    margin-bottom: 0.4rem;
     padding: 0.4rem 1rem;
     max-width: 85%;
     min-width: 15%;
     width: fit-content;
-    background-color: rgb(221, 217, 217);
+    background-color: #202024;
     border-radius: 8px;
 
     display: flex;
@@ -22,14 +22,24 @@
 
 .username{
     font-size: 1.1rem;
+    color: #E1E1E6;
+}
+
+.content{
+    background-color: #202024;
 }
 
 .text{
     font-size: 1rem;
     overflow-wrap: break-word;
+
+    background-color: transparent;
+    color: #C4C4CC;
 }
 
 .time{
     text-align: end;
     font-size: 0.8rem;
+    color: #C4C4CC;
+    background-color: #202024;
 }

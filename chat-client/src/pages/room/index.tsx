@@ -59,7 +59,7 @@ function RoomPage() {
           <Message key={index} className='other-message' username={message.username} text={message.text} created_at={message.created_at} typeOfMessage='withUsername'/>
         )}
       </div>
-      <input className="input" type="text" name="Nome" placeholder="Digite sua mensagem" onKeyPress={handleKeyPress} onChange={e => setText(e.target.value)} value={text}/>
+      <input className="input" type="text" placeholder="Digite sua mensagem" autoFocus onKeyPress={handleKeyPress} onChange={e => setText(e.target.value)} value={text}/>
     </div>
   )
 }

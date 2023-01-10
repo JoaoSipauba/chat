@@ -33,9 +33,10 @@ body {
 
 
 label{
-display: flex;
-align-self: flex-start;
-margin-bottom: 0.4rem;
+    display: flex;
+    align-self: flex-start;
+    margin-bottom: 0.4rem;
+    color: #ffff;
 }
 
 .bnt{
