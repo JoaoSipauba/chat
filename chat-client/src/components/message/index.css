@@ -21,8 +21,9 @@
 }
 
 .username{
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #E1E1E6;
+    background-color: #202024;
 }
 
 .content{

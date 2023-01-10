@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-export const socket = io('http://localhost:3333');
+export var socket = io('http://localhost:3333');
 
 interface ISelectRoom{
     username: string
@@ -10,6 +10,14 @@ interface IMessage{
     username: string | null
     room: string | null
     message: string
+}
+
+export function connectSocket(){
+    socket.open()
+}
+
+export function disconnectSocket(){
+    socket.disconnect()
 }
 
 export function selectRoom(user: ISelectRoom) {

@@ -51,6 +51,11 @@ label{
     border: none;
     border-radius: 5px;
     margin: 20px;
+    transition: 0.3s ease-in-out;
+}
+.bnt[disabled]{
+    background-color: rgb(70, 132, 70);
+    pointer-events: none;
 }
 .bnt:hover{
     background-color: rgb(1, 83, 1);

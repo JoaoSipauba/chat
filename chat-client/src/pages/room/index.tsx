@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom'
 import Message from '../../components/message';
-import { sendMessage, socket } from '../../service/socket';
+import { disconnectSocket, sendMessage, socket } from '../../service/socket';
 
 import './index.css'
 
@@ -34,6 +34,7 @@ function RoomPage() {
   }
 
   function logout() {
+    disconnectSocket();
     navigate('/login')
   }
 

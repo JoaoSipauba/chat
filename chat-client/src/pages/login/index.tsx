@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { selectRoom } from '../../service/socket';
+import { connectSocket, selectRoom } from '../../service/socket';
 import './index.css'
 
 function LoginPage() {
@@ -10,7 +10,8 @@ function LoginPage() {
   const [username, setUsername] = useState('')
 
   function login(e: any) {
-    e.preventDefault();  
+    e.preventDefault();
+    connectSocket();  
     selectRoom({username: username, room: room})
     navigate(`/room?username=${username}&room=${room}`)
   }
@@ -25,7 +26,7 @@ function LoginPage() {
             <label>Digite seu usuário</label>
             <input onChange={e => setUsername(e.target.value)} className="input" type="text" placeholder="username"/>
         </section>
-        <button type="submit" className="bnt">Entrar</button>
+        <button disabled={room.length === 0 || username.length === 0} type="submit" className="bnt">Entrar</button>
     </form>
   )
 }

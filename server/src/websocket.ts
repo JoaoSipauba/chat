@@ -26,7 +26,7 @@ io.on('connection', socket => {
                 room: userInRoom.room,
                 username: userInRoom.username,
                 created_at: new Date(),
-                text: `desconectado`,
+                text: `saiu da sala`,
                 type: 'connection'
             }
             messages.push(message);
@@ -48,6 +48,16 @@ io.on('connection', socket => {
                 socket_id: socket.id
             })
         }
+
+        const message: Message = {
+            room: data.room,
+            username: data.username,
+            created_at: new Date(),
+            text: `entrou na sala`,
+            type: 'connection'
+        }
+        messages.push(message);
+        io.to(message.room).emit("message", message)
     })
 
     socket.on('message', data => {
